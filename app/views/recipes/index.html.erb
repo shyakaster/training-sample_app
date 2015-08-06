@@ -2,8 +2,11 @@
 <hr/>
 <%@recipes.each do |recipe|%>
 <div class="row">
-  <div class="col-md-2">
-    <section class="chef-info center"></section>
+  <div class="col-lg-2">
+    <section class="chef-info center">
+      <%= gravatar_for(recipe.chef,size:100) %>
+      <h5>Chef name: <%= recipe.chef.chefname %></h5>
+    </section>
   </div>
   <div class="col-lg-8 well">
     <h4><%= link_to recipe.name," " %></h4>
