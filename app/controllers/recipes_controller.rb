@@ -10,8 +10,8 @@ class RecipesController < ApplicationController
   @recipe=Recipe.new
   end
   def create
-  @recipe=Recipe.new(recipe_params)
-  @recipe.chef=Chef.find(3)
+    @recipe=Recipe.new(recipe_params)
+    @recipe.chef=Chef.find(1)
     if @recipe.save
       flash[:notice]="Your recipe has been successfully created!"
       redirect_to recipes_path
@@ -35,6 +35,6 @@ class RecipesController < ApplicationController
   end
   private
     def recipe_params
-      params.require(:recipe).permit(:name,:summary,:description)
+      params.require(:recipe).permit(:name,:summary,:description,:picture)
     end
 end

@@ -29,6 +29,17 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # gem 'unicorn'
 gem 'annotate'
 gem 'pry', '~> 0.10.1'
+
+gem 'carrierwave', '~> 0.10.0'
+
+gem 'mini_magick','3.8.0'
+# gem 'graphicsmagick', '~> 1.0.5'
+# gem 'carrierwave-graphicsmagick', '~> 1.0.0'
+# gem 'imagemagick-identify', '~> 0.0.1'
+
+
+#gem 'rmagick', :require => 'RMagick'
+#gem 'rmagick'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

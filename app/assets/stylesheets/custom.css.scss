@@ -64,7 +64,7 @@ h2{
   margin-top: 10px;
 }
 .gravatar{
-  border-radius: 10px;
+  border-radius: 40px;
 }
 .well{
   background-color: #EDEDED;
@@ -77,4 +77,15 @@ input, textarea, select, .uneditable-input{
 }
 input{
   height: auto !important;
+}
+
+span.picture{
+  margin-top: 10px;
+  input{
+    border:0;
+  }
+}
+.show_recipe, .gravatar{
+  margin: 10px 10px 10px 10px;
+  padding-bottom: 5px;
 }
