@@ -14,6 +14,7 @@ class Chef < ActiveRecord::Base
   before_save {self.email=email.downcase}
 
   has_many :recipes
+  has_many :likes
 
   email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :chefname, presence: true, length: {maximum: 25, minimum: 5}
