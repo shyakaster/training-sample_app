@@ -11,11 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150816071419) do
+ActiveRecord::Schema.define(version: 20150817084459) do
 
   create_table "chefs", force: :cascade do |t|
-    t.string   "chefname",   limit: 255
-    t.string   "email",      limit: 255
+    t.string   "chefname",        limit: 255
+    t.string   "email",           limit: 255
+    t.string   "password_digest", limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -20,4 +20,5 @@ class Chef < ActiveRecord::Base
   validates :chefname, presence: true, length: {maximum: 25, minimum: 5}
   validates :email, presence: true, length: {maximum: 25}, uniqueness: {case_sensitive: false},format:
                       {with:email_regex}
+  has_secure_password
 end
