@@ -34,6 +34,7 @@ gem 'annotate'
 gem 'pry', '~> 0.10.1'
 
 gem 'carrierwave', '~> 0.10.0'
+gem 'fog', '~> 1.33.0'
 
 gem 'mini_magick','3.8.0'
 # gem 'graphicsmagick', '~> 1.0.5'
