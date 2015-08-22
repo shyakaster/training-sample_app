@@ -1,12 +1,13 @@
 Rails.application.routes.draw do
+  root "pages#home"
+  
+  get '/home', to: 'pages#home'
+
   get 'logins/new'
 
   get 'logins/create'
 
   get 'logins/destroy'
-
-  root "pages#home"
-  get '/home', to: 'pages#home'
 
   resources :recipes do
     member do
