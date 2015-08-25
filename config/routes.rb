@@ -1,18 +1,14 @@
 Rails.application.routes.draw do
   root "pages#home"
-  
+
   get '/home', to: 'pages#home'
 
-  get 'logins/new'
-
-  get 'logins/create'
-
-  get 'logins/destroy'
 
   resources :recipes do
     member do
       post 'like'
     end
+    resources :reviews
   end
 
   resources :chefs, except:[:new,:destroy]

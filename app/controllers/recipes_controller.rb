@@ -5,12 +5,14 @@ class RecipesController < ApplicationController
   before_action :require_same_user, only:[:edit,:update]
   before_action :admin_user, only: [:destroy]
   def index
+
     #@recipes=Recipe.all.sort_by { |likes| likes.thumbs_up_total}.reverse
     @recipes= Recipe.paginate(page: params[:page],per_page: 2)
 
+
   end
   def show
-
+    @review = Review.new
   end
   def new
   @recipe=Recipe.new
@@ -39,6 +41,7 @@ class RecipesController < ApplicationController
     end
   end
   def like
+    #binding.pry
     like = Like.create(like: params[:like],chef:current_user, recipe: @recipe)
     if like.valid?
       flash[:success]="Your selection was successful"
@@ -51,12 +54,12 @@ class RecipesController < ApplicationController
   end
   def destroy
     Recipe.find(params[:id]).destroy
-    flash[:notice]="Recipe deleted!"
+    flash[:notice]
     redirect_to recipes_path
   end
   private
     def recipe_params
-      params.require(:recipe).permit(:name,:summary,:description,:picture,style_ids: [], ingredient_ids: [])
+      params.require(:recipe).permit(:name,:summary,:description,:picture,:recipe_id,style_ids: [], ingredient_ids: [])
     end
   def set_recipe
     @recipe=Recipe.find(params[:id])

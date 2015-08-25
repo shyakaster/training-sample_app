@@ -7,6 +7,9 @@
 #  name        :string(255)
 #  summary     :text(65535)
 #  description :text(65535)
+#  picture     :string(255)
+#  created_at  :datetime
+#  updated_at  :datetime
 #
 
 require 'test_helper'

@@ -1,17 +1,18 @@
 # == Schema Information
 #
-# Table name: likes
+# Table name: reviews
 #
 #  id         :integer          not null, primary key
-#  like       :boolean
+#  summary    :text(65535)
+#  body       :text(65535)
 #  chef_id    :integer
 #  recipe_id  :integer
 #  created_at :datetime
 #  updated_at :datetime
 #
 
-class Like < ActiveRecord::Base
-  belongs_to :chef
+class Review < ActiveRecord::Base
   belongs_to :recipe
-  validates_uniqueness_of :chef, scope: :recipe
+  belongs_to :chef
+  validates :body, :presence => true, length: {minimum: 15, maximum: 100}
 end

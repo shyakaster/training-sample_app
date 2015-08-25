@@ -39,6 +39,31 @@
 
   </div>
 </div>
+<% if logged_in? %>
+    <div class="row">
+      <div class="col-md-8">
+        <%= render 'shared/page_title', title: "Review This Recipe" %>
+
+
+        <%= form_for([@recipe, @review]) do |f| %>
+            <%= f.label :Review %>
+            <%= f.text_area :body, rows: 5  %>
+
+            <%= f.submit "Create Review", class: "btn btn-success" %>
+        <% end %>
+
+      </div>
+    </div>
+<% else %>
+    <p><%= link_to "Want to leave a review? Go Sign up!", register_path %></p>
+<% end %>
+<div class="row">
+  <div class="col-md-8">
+    <h2>Reviews</h2>
+    <%= render @recipe.reviews %>
+
+  </div>
+</div>
 <div class="row">
   <div class="col-lg-2">
     <h5 id="recipes_index_link"><%= link_to 'Return to recipe listings', recipes_path,class:"btn btn-warning btn-small"

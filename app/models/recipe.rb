@@ -7,6 +7,9 @@
 #  name        :string(255)
 #  summary     :text(65535)
 #  description :text(65535)
+#  picture     :string(255)
+#  created_at  :datetime
+#  updated_at  :datetime
 #
 
 class Recipe < ActiveRecord::Base
@@ -17,6 +20,7 @@ class Recipe < ActiveRecord::Base
    has_many :styles, through: :recipe_styles
    has_many :recipe_ingredients, dependent: :destroy
    has_many :ingredients, through: :recipe_ingredients
+   has_many :reviews
    validates :name, presence: true, length:{minimum: 5, maximum: 100}
    validates :summary, presence: true, length: {minimum: 10, maximum: 150}
    validates :description, presence: true, length: {minimum: 20, maximum: 500}
