@@ -4,6 +4,11 @@
     <%= gravatar_for @chef, size: 200 %>
     <hr/>
   </div>
+  <%if logged_in? and (@chef == current_user || current_user.admin?)%>
+      <div class="btn btn-danger">
+           <%= link_to "[Delete Chef]",@chef,method: :delete, data:{confirm: "Are you sure ?"} %>
+      </div>
+  <%end%>
 
 </div>
 <div class="row">

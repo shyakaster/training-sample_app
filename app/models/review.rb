@@ -14,5 +14,13 @@
 class Review < ActiveRecord::Base
   belongs_to :recipe
   belongs_to :chef
+  has_many :review_likes
   validates :body, :presence => true, length: {minimum: 15, maximum: 100}
+  default_scope -> {order(updated_at: :desc)}
+  def thumbs_up_total
+    self.review_likes.where(review_like: true).size
+  end
+  def thumbs_down_total
+    self.review_likes.where(review_like: false).size
+  end
 end

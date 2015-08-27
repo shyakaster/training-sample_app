@@ -1,18 +1,19 @@
 class RecipesController < ApplicationController
   before_action :set_recipe, only:[:show, :edit,:update,:like]
-  before_action :require_user, except: [:show,:index,:like]
+  before_action :require_user, except: [:show,:index]
   before_action :require_user_like, only: [:like]
   before_action :require_same_user, only:[:edit,:update]
   before_action :admin_user, only: [:destroy]
   def index
 
     #@recipes=Recipe.all.sort_by { |likes| likes.thumbs_up_total}.reverse
-    @recipes= Recipe.paginate(page: params[:page],per_page: 2)
+    @recipes= Recipe.paginate(page: params[:page],per_page: 3)
 
 
   end
   def show
     @review = Review.new
+    @reviews=@recipe.reviews.paginate(page: params[:page], per_page: 2)
   end
   def new
   @recipe=Recipe.new
@@ -54,7 +55,7 @@ class RecipesController < ApplicationController
   end
   def destroy
     Recipe.find(params[:id]).destroy
-    flash[:notice]
+    flash[:notice]="Recipe successfully destroyed"
     redirect_to recipes_path
   end
   private

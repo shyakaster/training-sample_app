@@ -9,9 +9,13 @@ Rails.application.routes.draw do
       post 'like'
     end
     resources :reviews
+
+
   end
 
-  resources :chefs, except:[:new,:destroy]
+
+
+  resources :chefs, except:[:new]
     get '/register', to: 'chefs#new'
 
 
@@ -22,6 +26,5 @@ Rails.application.routes.draw do
   resources :styles, only:[:new, :create,:show]
 
   resources :ingredients, only:[:new, :create,:show]
-
-
 end
+

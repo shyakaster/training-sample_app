@@ -15,9 +15,11 @@ class Chef < ActiveRecord::Base
 
   before_save {self.email=email.downcase}
 
-  has_many :recipes
-  has_many :likes
-  has_many :reviews
+  has_many :recipes, dependent: :destroy
+  has_many :likes, dependent: :destroy
+  has_many :reviews, dependent: :destroy
+  has_many :review_likes, dependent: :destroy
+
 
 
   email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i

@@ -6,7 +6,7 @@ $navbar-default-color: $light-orange;
 @import "bootstrap";
 
 body{
-  padding-top:80px;
+  padding-top:120px;
 }
 #logo{
   margin-top: 10px;
@@ -96,4 +96,10 @@ span.picture{
 .show_recipe, .gravatar{
   margin: 10px 10px 10px 10px;
   padding-bottom: 5px;
+}
+.new_recipe-btn{
+  margin-left: 20px;
+}
+.my_recipes-btn{
+  margin-bottom: 0px;
 }

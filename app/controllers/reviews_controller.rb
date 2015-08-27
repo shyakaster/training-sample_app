@@ -1,7 +1,13 @@
 class ReviewsController < ApplicationController
-  before_action :set_review, only:  [:show,:edit, :update]
-  before_action :require_user,:except => 'show'
+  before_action :set_review, only:  [:index,:show,:edit, :update,:review_like]
+  before_action :require_user,except: [:show,:review_like]
+  before_action :require_user_like, :only =>'review_like'
   before_action :require_same_user, only:[:edit,:update]
+  def index
+    #@reviews=Review.paginate(page: params[:page], per_page: 2)
+    # @recipes=Recipes.paginate(page: params[:page], per_page: 2)
+
+  end
   def show
 
   end
@@ -22,8 +28,19 @@ class ReviewsController < ApplicationController
   def edit
 
   end
+  def review_like
+   # @recipe=Recipe.find(params[:recipe_id])
+    @review_like=ReviewLike.create(review_like: params[:review_like], chef: current_user,
+                                   recipe: @recipe, review: @review)
+    if like.valid?
+      flash[:notice]="Your vote was successful"
+      redirect_to :back
+    else
+      flash[:notice]="Your vote was not successful"
+      redirect_to :back
+    end
+  end
   def update
-
     if @review.update(review_params)
       flash[:notice]="Review was successfully updated"
       redirect_to recipe_path(@recipe)
@@ -47,6 +64,12 @@ class ReviewsController < ApplicationController
     if current_user != @review.chef and !current_user.admin?
       flash[:danger]="You can only edit your own review "
       redirect_to review_path(@review)
+    end
+  end
+  def require_user_like
+    if !logged_in?
+      flash[:notice]="You must be logged in to perform this action"
+      redirect_to :back
     end
   end
   def set_review

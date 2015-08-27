@@ -8,7 +8,7 @@
         <%end%>
         <ul class="dropdown-menu">
           <%Style.all.each do |style|%>
-          <li><%= link_to style.name, style_path(style) %></li>
+              <li><%= link_to style.name, style_path(style) %></li>
           <%end%>
           <%if logged_in?%>
               <li class="divider"></li>
@@ -53,7 +53,7 @@
         <ul class="nav-item">
           <li class="dropdown">
             <%= link_to '#',class:"btn btn-lg btn-danger dropdown-toggle", "data-toggle" =>"dropdown" do%>
-            <%= current_user.chefname %> <b class="caret"></b>
+                <%= current_user.chefname %> <b class="caret"></b>
             <%end%>
             <ul class="dropdown-menu">
               <li><%= link_to "View profile",chef_path(current_user) %></li>
@@ -63,12 +63,12 @@
             </ul>
           </li>
         </ul>
-        <%else%>
+    <%else%>
         <div class="nav-item">
           <%= link_to "Log in",login_path, class:"btn btn-lg btn-danger" %>
         </div>
 
-     <%end%>
+    <%end%>
 
   </div>
 </header>

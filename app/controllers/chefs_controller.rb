@@ -1,6 +1,7 @@
 class ChefsController < ApplicationController
   before_action :set_chef, only: [:edit,:update, :show]
   before_action :require_same_user, only: [:edit,:update]
+  before_action :require_user_destroy, only: [:destroy]
   def index
     @chefs=Chef.paginate(page: params[:page],per_page: 2)
 
@@ -31,6 +32,12 @@ class ChefsController < ApplicationController
   def show
     @recipes=@chef.recipes.paginate(page: params[:page], per_page: 2)
   end
+  def destroy
+    chef=Chef.find(params[:id]).destroy
+    flash[:notice]="#{chef.chefname} is destroyed!"
+    redirect_to chefs_path
+    session[:chef_id]= nil
+  end
 
   private
 
@@ -44,6 +51,12 @@ class ChefsController < ApplicationController
     if current_user != @chef
       flash[:notice]="You can only edit your own profile"
       redirect_to root_path
+    end
+  end
+  def require_user_destroy
+    if !logged_in?
+      flash[:notice]="You must be logged in to delete a user!"
+      redirect_to :back
     end
   end
 end
