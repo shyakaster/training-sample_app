@@ -48,7 +48,7 @@ class ChefsController < ApplicationController
     @chef=Chef.find(params[:id])
   end
   def require_same_user
-    if current_user != @chef
+    if @chef != (@chef or current_user.admin)
       flash[:notice]="You can only edit your own profile"
       redirect_to root_path
     end

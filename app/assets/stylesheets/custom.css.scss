@@ -7,6 +7,7 @@ $navbar-default-color: $light-orange;
 
 body{
   padding-top:120px;
+  background: url('tile.jpg') top left repeat;
 }
 #logo{
   margin-top: 10px;
@@ -100,6 +101,6 @@ span.picture{
 .new_recipe-btn{
   margin-left: 20px;
 }
-.my_recipes-btn{
-  margin-bottom: 0px;
+#myrecipes-btn{
+  margin-bottom: auto;
 }
