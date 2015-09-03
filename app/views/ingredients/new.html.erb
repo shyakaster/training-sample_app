@@ -5,7 +5,7 @@
     <%= form_for @ingredient do |f| %>
         <%=f.label :name%>
         <%=f.text_field :name%>
-        <%= f.submit(@ingredient.new_record? ? 'Create Ingredient' : 'Edit Recipe', class: 'btn btn-success') %>
+        <%= f.submit(@ingredient.new_record? ? 'Create Ingredient' : 'Edit Ingredient', class: 'btn btn-success') %>
     <%end%>
   </div>
 </div>

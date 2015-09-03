@@ -1,5 +1,6 @@
 class ChefsController < ApplicationController
   before_action :set_chef, only: [:edit,:update, :show]
+  before_action :require_user, except: [:show,:index,:new,:create]
   before_action :require_same_user, only: [:edit,:update]
   before_action :require_user_destroy, only: [:destroy]
   def index
@@ -54,8 +55,8 @@ class ChefsController < ApplicationController
     end
   end
   def require_user_destroy
-    if !logged_in?
-      flash[:notice]="You must be logged in to delete a user!"
+    if !current_user.admin?
+      flash[:notice]="You must be admin to delete a user!"
       redirect_to :back
     end
   end
