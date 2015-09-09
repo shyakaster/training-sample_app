@@ -26,5 +26,7 @@ Rails.application.routes.draw do
   resources :styles, only:[:new, :create,:show]
 
   resources :ingredients, only:[:new, :create,:show]
+
+  match ':controller(/:action(/:id(.:format)))', via: :any
 end
 

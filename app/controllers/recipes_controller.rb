@@ -7,13 +7,14 @@ class RecipesController < ApplicationController
   def index
 
     #@recipes=Recipe.all.sort_by { |likes| likes.thumbs_up_total}.reverse
-    @recipes= Recipe.paginate(page: params[:page],per_page: 2)
+    @recipes= Recipe.paginate(page: params[:page],per_page: 4)
 
 
   end
   def show
     @review = Review.new
     @reviews=@recipe.reviews.paginate(page: params[:page], per_page: 2)
+
   end
   def new
   @recipe=Recipe.new
@@ -64,6 +65,13 @@ class RecipesController < ApplicationController
     end
   def set_recipe
     @recipe=Recipe.find(params[:id])
+
+=begin
+    respond_to do |format|
+      format.html
+      format.json{ render json: @recipe.to_json}
+    end
+=end
   end
   def require_same_user
     if current_user != @recipe.chef and !current_user.admin?
