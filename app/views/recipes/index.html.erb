@@ -8,12 +8,13 @@
 <div class="row">
   <div class="col-lg-2">
     <section class="chef-info center">
-  <%= link_to gravatar_for(recipe.chef,size:100),chef_path(recipe.chef) %>
+      <!.. Feels good to implement a different kind of link parameter-->
+  <%= link_to gravatar_for(recipe.chef,size:100),controller: :chefs, action: :show, id: recipe.chef %>
   <h5>Chef name: <%= recipe.chef.chefname %></h5>
 </section>
 </div>
   <div class="col-lg-6 well">
-    <h4><%= link_to recipe.name,recipe_path(recipe) %></h4>
+    <h4><%= link_to recipe.name,controller: :recipes, action: :show,id: recipe %></h4>
     <p><%= recipe.summary %></p>
     <p>
     <%if recipe.styles.any?%>

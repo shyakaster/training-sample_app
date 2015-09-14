@@ -3,21 +3,15 @@ Rails.application.routes.draw do
 
   get '/home', to: 'pages#home'
 
-
   resources :recipes do
     member do
       post 'like'
     end
     resources :reviews
-
-
   end
-
-
 
   resources :chefs, except:[:new]
     get '/register', to: 'chefs#new'
-
 
   get '/login', to: 'logins#new'
   post '/login', to: 'logins#create'

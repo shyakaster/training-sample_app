@@ -24,7 +24,7 @@ class RecipesController < ApplicationController
     @recipe.chef=current_user
     if @recipe.save
       flash[:notice]="Your recipe has been successfully created!"
-      redirect_to recipes_path
+      redirect_to recipes_url
     else
       flash[:notice]="Your recipe failed to be saved"
       render :new
@@ -37,7 +37,7 @@ class RecipesController < ApplicationController
   def update
     if @recipe.update(recipe_params)
       flash[:notice]="Recipe was successfully updated"
-      redirect_to recipe_path(@recipe)
+      redirect_to recipe_url(@recipe)
     else
       render :edit
     end
@@ -52,7 +52,7 @@ class RecipesController < ApplicationController
       flash[:danger]="You can only like/dislike only once"
       redirect_to :back
     end
-
+ 
   end
   def destroy
     Recipe.find(params[:id]).destroy
