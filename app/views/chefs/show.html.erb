@@ -9,7 +9,7 @@
         <%= link_to 'Edit Chef',edit_chef_path(@chef), class: "btn btn-warning pull-left" %>
       </div>
   <%end%>
-  <%if current_user.admin?%>
+  <%if (logged_in? and current_user.admin?)%>
       <div class=" btn btn-danger">
            <%= link_to "[Delete Chef]",@chef,method: :delete, data:{confirm: "Are you sure ?"} %>
       </div>
