@@ -15,7 +15,7 @@ require 'test_helper'
 
 class ChefTest < ActiveSupport::TestCase
   def setup
-    @chef=Chef.new(chefname:"mike shyaka",email:"mbandashyaka@gmail.com")
+    @chef=Chef.new(chefname:"mike shyaka",email:"mbandashyaka@gmail.com",password:"password")
   end
   test 'chef should be valid' do
     assert @chef.valid?
